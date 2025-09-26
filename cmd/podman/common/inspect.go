@@ -13,4 +13,6 @@ const (
 	PodType = "pod"
 	// VolumeType is the volume type
 	VolumeType = "volume"
+	// ArtificatType is the artifact type
+	ArtifactType = "artifact"
 )

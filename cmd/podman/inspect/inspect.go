@@ -151,6 +151,13 @@ func (i *inspector) inspect(namesOrIDs []string) error {
 		for i := range volumeData {
 			data = append(data, volumeData[i])
 		}
+	case common.ArtifactType:
+		artifactOptions := entities.ArtifactInspectOptions{}
+		inspectData, err := i.imageEngine.ArtifactInspect(ctx, namesOrIDs[0], artifactOptions)
+		if err != nil {
+			return err
+		}
+		data = append(data, inspectData)
 	default:
 		return fmt.Errorf("invalid type %q: must be %q, %q, %q, %q, %q, or %q", i.options.Type,
 			common.ImageType, common.ContainerType, common.PodType, common.NetworkType, common.VolumeType, common.AllType)
